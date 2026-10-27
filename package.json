@@ -1,0 +1,9 @@
+{
+  "name": "hayek",
+  "version": "3.0.0",
+  "description": "A lightweight HTTP client wrapper around the native fetch API.",
+  "main": "hayek.js",
+  "type": "module",
+  "keywords": ["fetch", "http", "wrapper", "ajax"],
+  "license": "MIT"
+}
