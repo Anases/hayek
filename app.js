@@ -1,4 +1,4 @@
-// NanoFetch Documentation - Main Application
+// Hayek Documentation - Main Application
 (function() {
     'use strict';
 
@@ -9,8 +9,8 @@
         initialized: false
     };
 
-    // NanoFetch implementation (built-in, no CDN needed)
-    function createNanoFetch() {
+    // Hayek implementation (built-in, no CDN needed)
+    function createHayek() {
         function nanoRequest(url, options) {
             options = options || {};
             var timeout = options.timeout || 30000;
@@ -87,12 +87,12 @@
 
     // Initialize
     function initLibrary() {
-        var lib = createNanoFetch();
+        var lib = createHayek();
         state.nanoGet = lib.nanoGet;
         state.nanoPost = lib.nanoPost;
         state.nanoRequest = lib.nanoRequest;
         state.initialized = true;
-        console.log('[App] NanoFetch initialized (built-in)');
+        console.log('[App] Hayek initialized (built-in)');
     }
 
     // Toast notifications
