@@ -1212,6 +1212,127 @@ async function createUser(data: object) {
 }</code></pre>
                 </div>
             </section>
+            <hr>
+
+            <section id="exercise-1">
+                <h2>Exercise 1: First Request <a href="#exercise-1" class="anchor-link">#</a></h2>
+                <p>Try fetching data from the GitHub API. This will show you how Hayek handles responses and errors.</p>
+                
+                <div class="callout callout--info">
+                    <div class="callout-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                    </div>
+                    <div class="callout-content">
+                        <span class="callout-title">Note</span>
+                        <p>The button below makes a real API call to GitHub. Check your browser's Network tab to see the request.</p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                        Fetch GitHub Repository
+                    </h4>
+                    <p style="font-size: 0.875rem; margin-bottom: 1rem;">This fetches the facebook/react repository and displays the star count.</p>
+                    <button class="btn btn-primary" id="ex1Btn">Run Request</button>
+                    <div class="exercise-output" id="ex1Output">// Click the button to run</div>
+                </div>
+            </section>
+
+            <hr>
+
+            <section id="architecture">
+                <h2>How It Works <a href="#architecture" class="anchor-link">#</a></h2>
+                <p>When you call nanoGet or nanoPost, here is what happens internally:</p>
+                <ol>
+                    <li><strong>Configuration merge</strong> - Your options get combined with defaults</li>
+                    <li><strong>AbortController setup</strong> - A timeout signal is created if needed</li>
+                    <li><strong>Native fetch call</strong> - The actual HTTP request goes out</li>
+                    <li><strong>Status check</strong> - Response.ok is verified, errors are thrown</li>
+                    <li><strong>JSON parsing</strong> - Response body is parsed automatically</li>
+                    <li><strong>Return data</strong> - You get the parsed result or an error</li>
+                </ol>
+            </section>
+
+            <hr>
+
+            <section id="error-handling">
+                <h2>Error Handling <a href="#error-handling" class="anchor-link">#</a></h2>
+                <p>Native fetch only rejects on network failures. A 404 or 500 response is considered successful. Hayek changes this behavior to match what developers expect.</p>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>status</code></td>
+                                <td><code>number | null</code></td>
+                                <td>HTTP status code from the response</td>
+                            </tr>
+                            <tr>
+                                <td><code>isTimeout</code></td>
+                                <td><code>boolean</code></td>
+                                <td>True if the request exceeded the timeout</td>
+                            </tr>
+                            <tr>
+                                <td><code>isNetworkError</code></td>
+                                <td><code>boolean</code></td>
+                                <td>True for offline, CORS, or DNS failures</td>
+                            </tr>
+                            <tr>
+                                <td><code>isAborted</code></td>
+                                <td><code>boolean</code></td>
+                                <td>True if manually cancelled via AbortController</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="code-block" style="margin-top: var(--space-6);">
+                    <div class="code-header">
+                        <span>Error Handling Example</span>
+                        <button class="copy-btn" data-copy="try {
+    const data = await nanoGet('/api/resource');
+} catch (error) {
+    if (error.isTimeout) {
+        // Show retry button
+    } else if (error.isNetworkError) {
+        // Show offline message
+    } else if (error.status === 404) {
+        // Show not found page
+    } else if (error.status >= 500) {
+        // Show server error
+    }
+}">Copy</button>
+                    </div>
+                    <pre><code><span class="tok-kw">try</span> {
+    <span class="tok-kw">const</span> data = <span class="tok-kw">await</span> <span class="tok-fn">nanoGet</span>(<span class="tok-str">'/api/resource'</span>);
+} <span class="tok-kw">catch</span> (<span class="tok-obj">error</span>) {
+    <span class="tok-kw">if</span> (error.<span class="tok-obj">isTimeout</span>) {
+        <span class="tok-cm">// Show retry button</span>
+    } <span class="tok-kw">else if</span> (error.<span class="tok-obj">isNetworkError</span>) {
+        <span class="tok-cm">// Show offline message</span>
+    } <span class="tok-kw">else if</span> (error.<span class="tok-obj">status</span> === <span class="tok-num">404</span>) {
+        <span class="tok-cm">// Show not found page</span>
+    } <span class="tok-kw">else if</span> (error.<span class="tok-obj">status</span> >= <span class="tok-num">500</span>) {
+        <span class="tok-cm">// Show server error</span>
+    }
+}</code></pre>
+                </div>
+            </section>
 
             <hr>
 
