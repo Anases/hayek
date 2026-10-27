@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="NanoFetch v3.0 - Production Documentation">
-    <meta name="author" content="NanoFetch Contributors">
+    <meta name="description" content="Hayek v3.0 - Production Documentation">
+    <meta name="author" content="Hayek Contributors">
     <meta name="theme-color" content="#007aff">
     
     <meta http-equiv="Content-Security-Policy" content="
@@ -19,7 +19,7 @@
         form-action 'none';
     ">
     
-    <title>NanoFetch v3.0 | Documentation</title>
+    <title>Hayek v3.0 | Documentation</title>
 
     <style>
         :root {
@@ -1045,7 +1045,7 @@
     <aside class="sidebar" id="sidebar" aria-label="Documentation Navigation">
         <div class="sidebar-brand">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            NanoFetch
+            Hayek
         </div>
         <nav>
             <div class="nav-group">
@@ -1104,8 +1104,8 @@
         <div class="content-container prose">
             
             <section id="overview">
-                <h1>NanoFetch v3.0</h1>
-                <p>NanoFetch is a lightweight HTTP client wrapper around the native fetch API. It handles JSON parsing automatically, throws on HTTP errors, and provides timeout support out of the box. The library weighs approximately 1.2kb when gzipped and has zero dependencies.</p>
+                <h1>Hayek v3.0</h1>
+                <p>Hayek is a lightweight HTTP client wrapper around the native fetch API. It handles JSON parsing automatically, throws on HTTP errors, and provides timeout support out of the box. The library weighs approximately 1.2kb when gzipped and has zero dependencies.</p>
                 
                 <div class="badge-group">
                     <span class="badge badge--success">Zero Dependencies</span>
@@ -1119,12 +1119,12 @@
                     <div class="card">
                         <div class="card-icon">âš¡</div>
                         <div class="card-title">Automatic JSON</div>
-                        <div class="card-desc">No more calling .json() on every response. NanoFetch handles it automatically and returns parsed data.</div>
+                        <div class="card-desc">No more calling .json() on every response. Hayek handles it automatically and returns parsed data.</div>
                     </div>
                     <div class="card">
                         <div class="card-icon">ðŸ›¡ï¸</div>
                         <div class="card-title">Error Throwing</div>
-                        <div class="card-desc">Unlike native fetch, NanoFetch throws on 4xx and 5xx status codes so try/catch works as expected.</div>
+                        <div class="card-desc">Unlike native fetch, Hayek throws on 4xx and 5xx status codes so try/catch works as expected.</div>
                     </div>
                     <div class="card">
                         <div class="card-icon">â±ï¸</div>
@@ -1136,50 +1136,30 @@
 
             <hr>
 
-            <section id="installation">
+                        <section id="installation">
                 <h2>Installation <a href="#installation" class="anchor-link">#</a></h2>
-                <p>NanoFetch works in any environment with fetch support: modern browsers, Node.js 18+, Deno, and Bun.</p>
+                <p>Hayek works in any environment with fetch support: modern browsers, Node.js 18+, Deno, and Bun. You can include it directly via CDN or copy the source file into your project.</p>
                 <div class="tabs-container">
                     <div class="tabs-nav" role="tablist">
-                        <button class="tab-btn active" role="tab" data-tab="install-npm">npm</button>
-                        <button class="tab-btn" role="tab" data-tab="install-yarn">yarn</button>
-                        <button class="tab-btn" role="tab" data-tab="install-pnpm">pnpm</button>
-                        <button class="tab-btn" role="tab" data-tab="install-cdn">CDN</button>
+                        <button class="tab-btn active" role="tab" data-tab="install-cdn">CDN (ES Module)</button>
+                        <button class="tab-btn" role="tab" data-tab="install-script">Script Tag</button>
                     </div>
-                    <div class="tab-panel active" id="install-npm">
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span>Terminal</span>
-                                <button class="copy-btn" data-copy="npm install nano-fetch-wrapper">Copy</button>
-                            </div>
-                            <pre><code>npm install nano-fetch-wrapper</code></pre>
-                        </div>
-                    </div>
-                    <div class="tab-panel" id="install-yarn">
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span>Terminal</span>
-                                <button class="copy-btn" data-copy="yarn add nano-fetch-wrapper">Copy</button>
-                            </div>
-                            <pre><code>yarn add nano-fetch-wrapper</code></pre>
-                        </div>
-                    </div>
-                    <div class="tab-panel" id="install-pnpm">
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span>Terminal</span>
-                                <button class="copy-btn" data-copy="pnpm add nano-fetch-wrapper">Copy</button>
-                            </div>
-                            <pre><code>pnpm add nano-fetch-wrapper</code></pre>
-                        </div>
-                    </div>
-                    <div class="tab-panel" id="install-cdn">
+                    <div class="tab-panel active" id="install-cdn">
                         <div class="code-block">
                             <div class="code-header">
                                 <span>ES Module</span>
-                                <button class="copy-btn" data-copy="import { nanoGet } from 'https://esm.sh/nano-fetch-wrapper@3.0.0';">Copy</button>
+                                <button class="copy-btn" data-copy="import { nanoGet, nanoPost } from 'https://cdn.jsdelivr.net/gh/anases/hayek@main/hayek.js';">Copy</button>
                             </div>
-                            <pre><code>import { nanoGet } from 'https://esm.sh/nano-fetch-wrapper@3.0.0';</code></pre>
+                            <pre><code>import { nanoGet, nanoPost } from 'https://cdn.jsdelivr.net/gh/anases/hayek@main/hayek.js';</code></pre>
+                        </div>
+                    </div>
+                    <div class="tab-panel" id="install-script">
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>HTML</span>
+                                <button class="copy-btn" data-copy='<script src="https://cdn.jsdelivr.net/gh/anases/hayek@main/hayek.js"></script>'>Copy</button>
+                            </div>
+                            <pre><code>&lt;script src="https://cdn.jsdelivr.net/gh/anases/hayek@main/hayek.js"&gt;&lt;/script&gt;</code></pre>
                         </div>
                     </div>
                 </div>
@@ -1187,13 +1167,13 @@
 
             <hr>
 
-            <section id="quick-start">
+                        <section id="quick-start">
                 <h2>Quick Start <a href="#quick-start" class="anchor-link">#</a></h2>
                 <p>Here is a basic example showing how to make a GET request and handle the response.</p>
                 <div class="code-block">
                     <div class="code-header">
                         <span>TypeScript</span>
-                        <button class="copy-btn" data-copy="import { nanoGet, nanoPost } from 'nano-fetch-wrapper';
+                        <button class="copy-btn" data-copy="import { nanoGet, nanoPost } from 'hayek';
 
 async function getUser(id: number) {
     try {
@@ -1212,7 +1192,7 @@ async function createUser(data: object) {
     return user;
 }">Copy</button>
                     </div>
-                    <pre><code><span class="tok-kw">import</span> { nanoGet, nanoPost } <span class="tok-kw">from</span> <span class="tok-str">'nano-fetch-wrapper'</span>;
+                    <pre><code><span class="tok-kw">import</span> { nanoGet, nanoPost } <span class="tok-kw">from</span> <span class="tok-str">'hayek'</span>;
 
 <span class="tok-kw">async function</span> <span class="tok-fn">getUser</span>(<span class="tok-obj">id</span>: <span class="tok-obj">number</span>) {
     <span class="tok-kw">try</span> {
@@ -1235,131 +1215,9 @@ async function createUser(data: object) {
 
             <hr>
 
-            <section id="exercise-1">
-                <h2>Exercise 1: First Request <a href="#exercise-1" class="anchor-link">#</a></h2>
-                <p>Try fetching data from the GitHub API. This will show you how NanoFetch handles responses and errors.</p>
-                
-                <div class="callout callout--info">
-                    <div class="callout-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="16" x2="12" y2="12"/>
-                            <line x1="12" y1="8" x2="12.01" y2="8"/>
-                        </svg>
-                    </div>
-                    <div class="callout-content">
-                        <span class="callout-title">Note</span>
-                        <p>The button below makes a real API call to GitHub. Check your browser's Network tab to see the request.</p>
-                    </div>
-                </div>
-
-                <div class="exercise-box">
-                    <h4>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="16 18 22 12 16 6"/>
-                            <polyline points="8 6 2 12 8 18"/>
-                        </svg>
-                        Fetch GitHub Repository
-                    </h4>
-                    <p style="font-size: 0.875rem; margin-bottom: 1rem;">This fetches the facebook/react repository and displays the star count.</p>
-                    <button class="btn btn-primary" id="ex1Btn">Run Request</button>
-                    <div class="exercise-output" id="ex1Output">// Click the button to run</div>
-                </div>
-            </section>
-
-            <hr>
-
-            <section id="architecture">
-                <h2>How It Works <a href="#architecture" class="anchor-link">#</a></h2>
-                <p>When you call nanoGet or nanoPost, here is what happens internally:</p>
-                <ol>
-                    <li><strong>Configuration merge</strong> - Your options get combined with defaults</li>
-                    <li><strong>AbortController setup</strong> - A timeout signal is created if needed</li>
-                    <li><strong>Native fetch call</strong> - The actual HTTP request goes out</li>
-                    <li><strong>Status check</strong> - Response.ok is verified, errors are thrown</li>
-                    <li><strong>JSON parsing</strong> - Response body is parsed automatically</li>
-                    <li><strong>Return data</strong> - You get the parsed result or an error</li>
-                </ol>
-            </section>
-
-            <hr>
-
-            <section id="error-handling">
-                <h2>Error Handling <a href="#error-handling" class="anchor-link">#</a></h2>
-                <p>Native fetch only rejects on network failures. A 404 or 500 response is considered successful. NanoFetch changes this behavior to match what developers expect.</p>
-                
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Type</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>status</code></td>
-                                <td><code>number | null</code></td>
-                                <td>HTTP status code from the response</td>
-                            </tr>
-                            <tr>
-                                <td><code>isTimeout</code></td>
-                                <td><code>boolean</code></td>
-                                <td>True if the request exceeded the timeout</td>
-                            </tr>
-                            <tr>
-                                <td><code>isNetworkError</code></td>
-                                <td><code>boolean</code></td>
-                                <td>True for offline, CORS, or DNS failures</td>
-                            </tr>
-                            <tr>
-                                <td><code>isAborted</code></td>
-                                <td><code>boolean</code></td>
-                                <td>True if manually cancelled via AbortController</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="code-block" style="margin-top: var(--space-6);">
-                    <div class="code-header">
-                        <span>Error Handling Example</span>
-                        <button class="copy-btn" data-copy="try {
-    const data = await nanoGet('/api/resource');
-} catch (error) {
-    if (error.isTimeout) {
-        // Show retry button
-    } else if (error.isNetworkError) {
-        // Show offline message
-    } else if (error.status === 404) {
-        // Show not found page
-    } else if (error.status >= 500) {
-        // Show server error
-    }
-}">Copy</button>
-                    </div>
-                    <pre><code><span class="tok-kw">try</span> {
-    <span class="tok-kw">const</span> data = <span class="tok-kw">await</span> <span class="tok-fn">nanoGet</span>(<span class="tok-str">'/api/resource'</span>);
-} <span class="tok-kw">catch</span> (<span class="tok-obj">error</span>) {
-    <span class="tok-kw">if</span> (error.<span class="tok-obj">isTimeout</span>) {
-        <span class="tok-cm">// Show retry button</span>
-    } <span class="tok-kw">else if</span> (error.<span class="tok-obj">isNetworkError</span>) {
-        <span class="tok-cm">// Show offline message</span>
-    } <span class="tok-kw">else if</span> (error.<span class="tok-obj">status</span> === <span class="tok-num">404</span>) {
-        <span class="tok-cm">// Show not found page</span>
-    } <span class="tok-kw">else if</span> (error.<span class="tok-obj">status</span> >= <span class="tok-num">500</span>) {
-        <span class="tok-cm">// Show server error</span>
-    }
-}</code></pre>
-                </div>
-            </section>
-
-            <hr>
-
             <section id="exercise-2">
                 <h2>Exercise 2: Error Handling <a href="#exercise-2" class="anchor-link">#</a></h2>
-                <p>This exercise demonstrates how NanoFetch handles HTTP errors. The button triggers a 404 response.</p>
+                <p>This exercise demonstrates how Hayek handles HTTP errors. The button triggers a 404 response.</p>
                 
                 <div class="exercise-box">
                     <h4>
@@ -1426,7 +1284,7 @@ async function search(query) {
 
             <section id="dynamic-injection">
                 <h2>Tailwind CSS Demo <a href="#dynamic-injection" class="anchor-link">#</a></h2>
-                <p>This demo fetches the Tailwind CSS file and applies it to the page. It shows how NanoFetch handles large text responses.</p>
+                <p>This demo fetches the Tailwind CSS file and applies it to the page. It shows how Hayek handles large text responses.</p>
 
                 <div class="callout callout--info">
                     <div class="callout-icon">
@@ -1489,17 +1347,17 @@ async function search(query) {
 
             <hr>
 
-            <section id="react-integration">
+                        <section id="react-integration">
                 <h2>React Hook <a href="#react-integration" class="anchor-link">#</a></h2>
                 <p>A custom hook that handles loading states, errors, and cleanup automatically.</p>
                 
                 <div class="code-block">
                     <div class="code-header">
-                        <span>useNanoFetch Hook</span>
+                        <span>useHayek Hook</span>
                         <button class="copy-btn" data-copy="import { useState, useEffect } from 'react';
-import { nanoGet } from 'nano-fetch-wrapper';
+import { nanoGet } from 'hayek';
 
-export function useNanoFetch(url) {
+export function useHayek(url) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -1524,9 +1382,9 @@ export function useNanoFetch(url) {
 }">Copy</button>
                     </div>
                     <pre><code><span class="tok-kw">import</span> { useState, useEffect } <span class="tok-kw">from</span> <span class="tok-str">'react'</span>;
-<span class="tok-kw">import</span> { nanoGet } <span class="tok-kw">from</span> <span class="tok-str">'nano-fetch-wrapper'</span>;
+<span class="tok-kw">import</span> { nanoGet } <span class="tok-kw">from</span> <span class="tok-str">'hayek'</span>;
 
-<span class="tok-kw">export function</span> <span class="tok-fn">useNanoFetch</span>(<span class="tok-obj">url</span>) {
+<span class="tok-kw">export function</span> <span class="tok-fn">useHayek</span>(<span class="tok-obj">url</span>) {
     <span class="tok-kw">const</span> [data, setData] = <span class="tok-fn">useState</span>(<span class="tok-kw">null</span>);
     <span class="tok-kw">const</span> [loading, setLoading] = <span class="tok-fn">useState</span>(<span class="tok-kw">false</span>);
     <span class="tok-kw">const</span> [error, setError] = <span class="tok-fn">useState</span>(<span class="tok-kw">null</span>);
@@ -1613,7 +1471,7 @@ export function useNanoFetch(url) {
 
             <footer class="site-footer">
                 <div>
-                    <p>&copy; <span id="year-el"></span> NanoFetch Contributors. MIT License.</p>
+                    <p>&copy; <span id="year-el"></span> Hayek Contributors. MIT License.</p>
                 </div>
                 <div class="footer-links">
                     <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
